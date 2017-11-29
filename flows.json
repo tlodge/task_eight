@@ -1,0 +1,98 @@
+[
+    {
+        "id": "b719f18c.83eb6",
+        "label": "new package",
+        "type": "tab"
+    },
+    {
+        "id": "7dd759.9d3eb8a8",
+        "type": "inject",
+        "z": "b719f18c.83eb6",
+        "name": "inject",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": 1,
+        "crontab": "",
+        "once": false,
+        "x": 67,
+        "y": 249,
+        "wires": [
+            [
+                "3669d771.442dd8"
+            ]
+        ]
+    },
+    {
+        "id": "797dae5d.c79ef",
+        "type": "bulbsout",
+        "z": "b719f18c.83eb6",
+        "name": "",
+        "subtype": "set-bulb-on",
+        "value": "",
+        "x": 370,
+        "y": 307,
+        "wires": []
+    },
+    {
+        "id": "3669d771.442dd8",
+        "type": "dbfunction",
+        "z": "b719f18c.83eb6",
+        "name": "",
+        "func": "//read in a counter variable\nvar counter = context.get(\"counter\") || 0;\ncontext.set(\"counter\", counter + 1);\n\n//get binary representation of the counter\nvar base2 = (counter%8).toString(2);\nvar b = [];\n\nfor (var i = 0; i < 3; i++)\n  b[i] = (counter%8 >> i) & 1;\n  \nvar output = [\n    {payload: b.reverse()},\n    {payload: b[2] ? \"on\":\"off\"},\n    {payload: b[1] ? \"on\":\"off\"},\n    {payload: b[0] ? \"on\":\"off\"} \n]\n\n//var onoff = context.get(\"onoff\") || \"on\";\n//context.set(\"onoff\", onoff === \"on\" ? \"off\" : \"on\");\n\nreturn output",
+        "outputs": 4,
+        "inputtypedef": "",
+        "outputtypedef": "",
+        "noerr": 0,
+        "x": 211,
+        "y": 257,
+        "wires": [
+            [
+                "9518a935.79a088"
+            ],
+            [
+                "258617f9.3b87e8"
+            ],
+            [
+                "797dae5d.c79ef"
+            ],
+            [
+                "5999b2ae.063bdc"
+            ]
+        ]
+    },
+    {
+        "id": "258617f9.3b87e8",
+        "type": "bulbsout",
+        "z": "b719f18c.83eb6",
+        "name": "",
+        "subtype": "set-bulb-on",
+        "value": "",
+        "x": 370,
+        "y": 222,
+        "wires": []
+    },
+    {
+        "id": "5999b2ae.063bdc",
+        "type": "bulbsout",
+        "z": "b719f18c.83eb6",
+        "name": "",
+        "subtype": "set-bulb-on",
+        "value": "",
+        "x": 374,
+        "y": 386,
+        "wires": []
+    },
+    {
+        "id": "9518a935.79a088",
+        "type": "debugger",
+        "z": "b719f18c.83eb6",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 375,
+        "y": 69,
+        "wires": []
+    }
+]
