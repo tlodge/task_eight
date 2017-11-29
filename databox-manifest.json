@@ -1,0 +1,60 @@
+{
+    "manifest-version": 1,
+    "name": "tlodge-demo-hue-binary",
+    "version": "0.1.0",
+    "description": "",
+    "author": "tlodge",
+    "licence": "MIT",
+    "databox-type": "app",
+    "tags": [
+        "on ",
+        " off"
+    ],
+    "homepage": "https://github.com/tlodge/task_binary",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tlodge/task_binary.git"
+    },
+    "packages": [
+        {
+            "id": "b719f18c.83eb6",
+            "name": "new package",
+            "purpose": "testing on or off",
+            "required": false,
+            "datastores": [
+                "797dae5d.c79ef",
+                "258617f9.3b87e8",
+                "5999b2ae.063bdc"
+            ],
+            "benefits": "lots"
+        }
+    ],
+    "allowed-combinations": [],
+    "datasources": [
+        {
+            "type": "set-bulb-on",
+            "required": true,
+            "name": "bulbsout",
+            "clientid": "797dae5d.c79ef",
+            "granularities": []
+        },
+        {
+            "type": "set-bulb-on",
+            "required": true,
+            "name": "bulbsout",
+            "clientid": "258617f9.3b87e8",
+            "granularities": []
+        },
+        {
+            "type": "set-bulb-on",
+            "required": true,
+            "name": "bulbsout",
+            "clientid": "5999b2ae.063bdc",
+            "granularities": []
+        }
+    ],
+    "network-permissions": [],
+    "resource-requirements": {},
+    "volumes": [],
+    "export-whitelist": []
+}
